@@ -1,0 +1,12 @@
+[submodule "client"]
+	path = client
+	url = git@github.com:Falinor/baby-foot-client.git
+[submodule "api"]
+	path = api
+	url = git@github.com:Falinor/baby-foot-api.git
+[submodule "host"]
+	path = host
+	url = git@github.com:Falinor/baby-foot-host.git
+[submodule "server"]
+	path = server
+	url = git@github.com:Falinor/baby-foot-server.git
