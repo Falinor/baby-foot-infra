@@ -1,6 +1,3 @@
-[submodule "client"]
-	path = client
-	url = git@github.com:Falinor/baby-foot-client.git
 [submodule "api"]
 	path = api
 	url = git@github.com:Falinor/baby-foot-api.git
