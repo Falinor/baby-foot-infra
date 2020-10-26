@@ -25,7 +25,7 @@ services:
     entrypoint: bash -c "yarn db:migrate && yarn serve"
     ports:
       - "9000:9000"
-    links:
+    depends_on:
       - db
       - redis
     environment:
@@ -37,7 +37,7 @@ services:
     build: ./api
     image: inadvertance/baby-foot-api-ranking-job
     command: jobs:ranking
-    links:
+    depends_on:
       - redis
     environment:
       REDIS_URI: redis://redis:6379
