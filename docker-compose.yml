@@ -4,11 +4,16 @@ services:
   host:
     image: inadvertance/baby-foot-host
     build: ./host
+    command: dev
     ports:
       - "3000:3000"
     environment:
       HOST: 0.0.0.0
       PORT: 3000
+      NODE_ENV: production
+      NUXT_ENV_FEATURES_MATCH: "false"
+      NUXT_ENV_FEATURES_RANKED: "false"
+      NUXT_ENV_FEATURES_STREAM: "false"
 
   server:
     image: inadvertance/baby-foot-server
@@ -31,6 +36,7 @@ services:
     environment:
       PORT: 9000
       ARANGODB_URL: http://db:8529
+      LOG_LEVEL: info
       REDIS_URI: redis://redis:6379
 
   ranking:
@@ -38,8 +44,11 @@ services:
     image: inadvertance/baby-foot-api-ranking-job
     command: jobs:ranking
     depends_on:
+      - db
       - redis
     environment:
+      ARANGODB_URL: http://db:8529
+      LOG_LEVEL: info
       REDIS_URI: redis://redis:6379
 
   db:
